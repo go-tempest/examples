@@ -4,9 +4,9 @@ type HealthService interface {
     Check() bool
 }
 
-type DefaultHealthService struct {
+type DefaultHealthServiceImpl struct {
 }
 
-func (*DefaultHealthService) Check() bool {
+func (*DefaultHealthServiceImpl) Check() bool {
     return true
 }

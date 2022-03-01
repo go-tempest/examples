@@ -29,12 +29,26 @@ func CreateHttpHandler(_ context.Context, endpoints endpts.AssemblyEndpoints, lo
         options...,
     ))
 
+    r.Methods("GET").Path("/hello").Handler(kithttp.NewServer(
+        endpoints.HelloEndpoint,
+        decodeSayHelloRequest,
+        encodeJsonResponse,
+        options...,
+    ))
+
     return r
 }
 
 // decodeHealthCheckRequest decode request
 func decodeHealthCheckRequest(ctx context.Context, r *http.Request) (interface{}, error) {
     return endpts.HealthRequest{}, nil
+}
+
+// decodeHealthCheckRequest decode request
+func decodeSayHelloRequest(ctx context.Context, r *http.Request) (interface{}, error) {
+    return endpts.SayHelloRequest{
+        Name: r.URL.Query().Get("name"),
+    }, nil
 }
 
 // encodeJsonResponse encode response to return

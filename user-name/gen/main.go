@@ -27,9 +27,11 @@ func main() {
     //    logger = log.With(logger, "caller", log.DefaultCaller)
     //}
 
-    healthEndpoint := endpoint.CreateHealthCheckEndpoint(new(service.DefaultHealthService))
+    healthEndpoint := endpoint.CreateHealthCheckEndpoint(new(service.DefaultHealthServiceImpl))
+    helloEndpoint := endpoint.CreateSayHelloEndpoint(new(service.HelloServiceImpl))
     endpts := endpoint.AssemblyEndpoints{
         HealthEndpoint: healthEndpoint,
+        HelloEndpoint: helloEndpoint,
     }
     
     handler := transport.CreateHttpHandler(ctx, endpts, log.EmptyFlagLogger)

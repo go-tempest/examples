@@ -8,6 +8,7 @@ import (
 
 type AssemblyEndpoints struct {
     HealthEndpoint endpoint.Endpoint
+    HelloEndpoint  endpoint.Endpoint
 }
 
 // HealthResponse 健康检查响应结构
@@ -23,6 +24,24 @@ func CreateHealthCheckEndpoint(svc service.HealthService) endpoint.Endpoint {
         status := svc.Check()
         return HealthResponse{
             Status: status,
+        }, nil
+    }
+}
+
+type SayHelloRequest struct {
+    Name string `json:"name"`
+}
+
+type SayHelloResponse struct {
+    Message string `json:"message"`
+}
+
+func CreateSayHelloEndpoint(svc service.HelloService) endpoint.Endpoint {
+    return func(ctx context.Context, request interface{}) (response interface{}, err error) {
+        req := request.(SayHelloRequest)
+        message := svc.SayHello(req.Name)
+        return SayHelloResponse{
+            Message: message,
         }, nil
     }
 }
