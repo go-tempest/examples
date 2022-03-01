@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-admin-team/go-admin-core/sdk/config"
 	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
-	"user/common/middleware/handler"
+	"tenant/common/middleware/handler"
 )
 
 // AuthInit jwt验证new

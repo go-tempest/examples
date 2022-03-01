@@ -3,7 +3,7 @@ package apis
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/captcha"
-	api "user/common/apis"
+	api "tenant/common/apis"
 )
 
 type System struct {

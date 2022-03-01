@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
-	"user/app/models"
-	"user/app/service"
-	"user/app/service/dto"
-	api "user/common/apis"
+	"tenant/app/models"
+	"tenant/app/service"
+	"tenant/app/service/dto"
+	api "tenant/common/apis"
 )
 
 type SysOperaLog struct {

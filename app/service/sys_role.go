@@ -8,10 +8,10 @@ import (
 	"github.com/casbin/casbin/v2"
 
 	"gorm.io/gorm"
-	service "user/common/service"
+	service "tenant/common/service"
 
-	"user/app/models"
-	"user/app/service/dto"
+	"tenant/app/models"
+	"tenant/app/service/dto"
 )
 
 type SysRole struct {

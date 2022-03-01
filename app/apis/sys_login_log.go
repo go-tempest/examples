@@ -3,11 +3,11 @@ package apis
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
-	"user/app/models"
-	api "user/common/apis"
+	"tenant/app/models"
+	api "tenant/common/apis"
 
-	"user/app/service"
-	"user/app/service/dto"
+	"tenant/app/service"
+	"tenant/app/service/dto"
 )
 
 type SysLoginLog struct {

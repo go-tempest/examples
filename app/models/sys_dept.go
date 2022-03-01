@@ -1,6 +1,6 @@
 package models
 
-import "user/common/models"
+import "tenant/common/models"
 
 type SysDept struct {
 	DeptId   int    `json:"deptId" gorm:"primaryKey;autoIncrement;"` //部门编码

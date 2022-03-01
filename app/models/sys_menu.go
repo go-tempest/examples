@@ -1,6 +1,6 @@
 package models
 
-import "user/common/models"
+import "tenant/common/models"
 
 type SysMenu struct {
 	MenuId     int       `json:"menuId" gorm:"primaryKey;autoIncrement"`

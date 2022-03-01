@@ -1,7 +1,7 @@
 package models
 
 import (
-	"user/common/models"
+	"tenant/common/models"
 )
 
 type SysDictData struct {

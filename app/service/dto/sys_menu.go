@@ -1,10 +1,10 @@
 package dto
 
 import (
-	"user/app/models"
-	common "user/common/models"
+	"tenant/app/models"
+	common "tenant/common/models"
 
-	"user/common/dto"
+	"tenant/common/dto"
 )
 
 // SysMenuGetPageReq 列表或者搜索使用结构体

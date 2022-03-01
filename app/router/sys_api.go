@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
 
-	"user/app/apis"
-	"user/common/middleware"
+	"tenant/app/apis"
+	"tenant/common/middleware"
 )
 
 func init() {

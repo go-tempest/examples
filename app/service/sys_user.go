@@ -2,16 +2,16 @@ package service
 
 import (
 	"errors"
-	"user/app/models"
-	"user/app/service/dto"
+	"tenant/app/models"
+	"tenant/app/service/dto"
 
 	log "github.com/go-admin-team/go-admin-core/logger"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"gorm.io/gorm"
-	"user/common/service"
+	"tenant/common/service"
 
-	"user/common/actions"
-	cDto "user/common/dto"
+	"tenant/common/actions"
+	cDto "tenant/common/dto"
 )
 
 type SysUser struct {

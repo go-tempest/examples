@@ -4,11 +4,11 @@ import (
 	"errors"
 
 	"gorm.io/gorm"
-	"user/common/service"
+	"tenant/common/service"
 
-	"user/app/models"
-	"user/app/service/dto"
-	cDto "user/common/dto"
+	"tenant/app/models"
+	"tenant/app/service/dto"
+	cDto "tenant/common/dto"
 )
 
 type SysLoginLog struct {

@@ -9,9 +9,9 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"tenant/common"
+	gaConfig "tenant/config"
 	"time"
-	"user/common"
-	gaConfig "user/config"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk"
@@ -20,7 +20,7 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 
-	"user/common/global"
+	"tenant/common/global"
 )
 
 // LoggerToFile 日志记录到文件

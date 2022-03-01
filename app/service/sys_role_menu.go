@@ -1,7 +1,7 @@
 package service
 
 import (
-	"user/common/service"
+	"tenant/common/service"
 )
 
 // SysRoleMenu 即将弃用结构体

@@ -13,7 +13,7 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"gorm.io/gorm"
 
-	"user/common/service"
+	"tenant/common/service"
 )
 
 var DefaultLanguage = "zh-CN"

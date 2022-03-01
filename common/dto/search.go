@@ -3,7 +3,7 @@ package dto
 import (
 	"github.com/go-admin-team/go-admin-core/tools/search"
 	"gorm.io/gorm"
-	"user/common/global"
+	"tenant/common/global"
 )
 
 type GeneralDelDto struct {

@@ -5,12 +5,12 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"gorm.io/gorm"
 
-	"user/app/models"
-	"user/app/service/dto"
-	cDto "user/common/dto"
-	cModels "user/common/models"
+	"tenant/app/models"
+	"tenant/app/service/dto"
+	cDto "tenant/common/dto"
+	cModels "tenant/common/models"
 
-	"user/common/service"
+	"tenant/common/service"
 )
 
 type SysMenu struct {

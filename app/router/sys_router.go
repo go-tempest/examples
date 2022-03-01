@@ -5,9 +5,9 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/config"
 	jwt "github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/ws"
-	"user/app/apis"
-	"user/common/middleware"
-	"user/common/middleware/handler"
+	"tenant/app/apis"
+	"tenant/common/middleware"
+	"tenant/common/middleware/handler"
 )
 
 func InitSysRouter(r *gin.Engine, authMiddleware *jwt.GinJWTMiddleware) *gin.RouterGroup {

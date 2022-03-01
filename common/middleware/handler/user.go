@@ -2,7 +2,7 @@ package handler
 
 import (
 	"gorm.io/gorm"
-	"user/common/models"
+	"tenant/common/models"
 )
 
 type SysUser struct {

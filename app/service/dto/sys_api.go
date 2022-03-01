@@ -1,9 +1,9 @@
 package dto
 
 import (
-	"user/app/models"
-	"user/common/dto"
-	common "user/common/models"
+	"tenant/app/models"
+	"tenant/common/dto"
+	common "tenant/common/models"
 )
 
 // SysApiGetPageReq 功能列表请求参数

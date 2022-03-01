@@ -4,11 +4,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
-	api "user/common/apis"
+	api "tenant/common/apis"
 
-	"user/app/models"
-	"user/app/service"
-	"user/app/service/dto"
+	"tenant/app/models"
+	"tenant/app/service"
+	"tenant/app/service/dto"
 )
 
 type SysConfig struct {

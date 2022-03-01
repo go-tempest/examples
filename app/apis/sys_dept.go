@@ -6,11 +6,11 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
-	"user/app/models"
-	api "user/common/apis"
+	"tenant/app/models"
+	api "tenant/common/apis"
 
-	"user/app/service"
-	"user/app/service/dto"
+	"tenant/app/service"
+	"tenant/app/service/dto"
 )
 
 type SysDept struct {

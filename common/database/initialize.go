@@ -14,7 +14,7 @@ import (
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 
-	"user/common/global"
+	"tenant/common/global"
 )
 
 // Setup 配置数据库

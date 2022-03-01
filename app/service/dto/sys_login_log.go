@@ -3,7 +3,7 @@ package dto
 import (
 	"time"
 
-	"user/common/dto"
+	"tenant/common/dto"
 )
 
 type SysLoginLogGetPageReq struct {

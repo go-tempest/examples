@@ -3,9 +3,9 @@ package dto
 import (
 	"time"
 
-	"user/app/models"
-	"user/common/dto"
-	common "user/common/models"
+	"tenant/app/models"
+	"tenant/common/dto"
+	common "tenant/common/models"
 )
 
 type SysOperaLogGetPageReq struct {

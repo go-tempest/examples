@@ -2,17 +2,17 @@ package service
 
 import (
 	"errors"
-	"user/app/models"
+	"tenant/app/models"
 
 	log "github.com/go-admin-team/go-admin-core/logger"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 
 	"gorm.io/gorm"
 
-	"user/app/service/dto"
-	cDto "user/common/dto"
+	"tenant/app/service/dto"
+	cDto "tenant/common/dto"
 
-	"user/common/service"
+	"tenant/common/service"
 )
 
 type SysDept struct {

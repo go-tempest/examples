@@ -3,12 +3,12 @@ package service
 import (
 	"errors"
 
-	"user/app/models"
-	"user/app/service/dto"
-	cDto "user/common/dto"
+	"tenant/app/models"
+	"tenant/app/service/dto"
+	cDto "tenant/common/dto"
 
 	"gorm.io/gorm"
-	"user/common/service"
+	"tenant/common/service"
 )
 
 type SysConfig struct {

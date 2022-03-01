@@ -1,6 +1,6 @@
 package models
 
-import "user/common/models"
+import "tenant/common/models"
 
 type SysRole struct {
 	RoleId    int        `json:"roleId" gorm:"primaryKey;autoIncrement"` // 角色编码

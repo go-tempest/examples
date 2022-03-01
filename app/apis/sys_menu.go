@@ -4,11 +4,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
-	"user/app/models"
-	api "user/common/apis"
+	"tenant/app/models"
+	api "tenant/common/apis"
 
-	"user/app/service"
-	"user/app/service/dto"
+	"tenant/app/service"
+	"tenant/app/service/dto"
 )
 
 type SysMenu struct {

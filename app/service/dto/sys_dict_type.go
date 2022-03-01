@@ -1,10 +1,10 @@
 package dto
 
 import (
-	"user/app/models"
+	"tenant/app/models"
 
-	"user/common/dto"
-	common "user/common/models"
+	"tenant/common/dto"
+	common "tenant/common/models"
 )
 
 type SysDictTypeGetPageReq struct {

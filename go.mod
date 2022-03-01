@@ -1,10 +1,9 @@
-module user
+module tenant
 
 go 1.17
 
 require (
 	github.com/alibaba/sentinel-golang v0.6.1
-	github.com/aliyun/aliyun-oss-go-sdk v0.0.0-20190307165228-86c17b95fcd5
 	github.com/bitly/go-simplejson v0.5.0
 	github.com/bytedance/go-tagexpr/v2 v2.7.12
 	github.com/casbin/casbin/v2 v2.25.1
@@ -96,7 +95,6 @@ require (
 	golang.org/x/lint v0.0.0-20200302205851-738671d3881b // indirect
 	golang.org/x/sys v0.0.0-20220111092808-5a964db01320 // indirect
 	golang.org/x/text v0.3.3 // indirect
-	golang.org/x/time v0.0.0-20191024005414-555d28b269f0 // indirect
 	golang.org/x/tools v0.0.0-20210106214847-113979e3529a // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/protobuf v1.26.0-rc.1 // indirect

@@ -3,17 +3,17 @@ package apis
 import (
 	"github.com/gin-gonic/gin/binding"
 	"net/http"
-	"user/app/models"
-	api "user/common/apis"
+	"tenant/app/models"
+	api "tenant/common/apis"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"github.com/google/uuid"
 
-	"user/app/service"
-	"user/app/service/dto"
-	"user/common/actions"
+	"tenant/app/service"
+	"tenant/app/service/dto"
+	"tenant/common/actions"
 )
 
 type SysUser struct {

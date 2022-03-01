@@ -3,8 +3,8 @@ package handler
 import (
 	"fmt"
 	"net/http"
-	"user/app/models"
-	"user/common"
+	"tenant/app/models"
+	"tenant/common"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk"
@@ -16,9 +16,9 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"github.com/mssola/user_agent"
-	gaConfig "user/config"
+	gaConfig "tenant/config"
 
-	"user/common/global"
+	"tenant/common/global"
 )
 
 func PayloadFunc(data interface{}) jwt.MapClaims {

@@ -1,8 +1,8 @@
 package dto
 
 import (
-	"user/app/models"
-	common "user/common/models"
+	"tenant/app/models"
+	common "tenant/common/models"
 )
 
 // SysDeptGetPageReq 列表或者搜索使用结构体

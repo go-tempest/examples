@@ -6,12 +6,12 @@ import (
 
 	"github.com/go-admin-team/go-admin-core/sdk/runtime"
 	"gorm.io/gorm"
-	"user/common/service"
+	"tenant/common/service"
 
-	"user/app/models"
-	"user/app/service/dto"
-	"user/common/actions"
-	cDto "user/common/dto"
+	"tenant/app/models"
+	"tenant/app/service/dto"
+	"tenant/common/actions"
+	cDto "tenant/common/dto"
 )
 
 type SysApi struct {

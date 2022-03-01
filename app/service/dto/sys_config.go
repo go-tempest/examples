@@ -1,9 +1,9 @@
 package dto
 
 import (
-	"user/app/models"
-	"user/common/dto"
-	common "user/common/models"
+	"tenant/app/models"
+	"tenant/common/dto"
+	common "tenant/common/models"
 )
 
 // SysConfigGetPageReq 列表或者搜索使用结构体

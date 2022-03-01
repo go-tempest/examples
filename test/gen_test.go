@@ -1,7 +1,7 @@
 package test
 
 import (
-	//"user/models/tools"
+	//"tenant/models/tools"
 	//"os"
 	"testing"
 	//"text/template"

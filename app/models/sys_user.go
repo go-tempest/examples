@@ -3,7 +3,7 @@ package models
 import (
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
-	"user/common/models"
+	"tenant/common/models"
 )
 
 type SysUser struct {

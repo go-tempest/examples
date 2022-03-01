@@ -1,6 +1,6 @@
 package models
 
-import "user/common/models"
+import "tenant/common/models"
 
 type SysPost struct {
 	PostId   int    `gorm:"primaryKey;autoIncrement" json:"postId"` //岗位编号

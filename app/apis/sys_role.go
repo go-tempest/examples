@@ -5,16 +5,16 @@ import (
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-admin-team/go-admin-core/sdk"
 	"net/http"
-	"user/app/models"
+	"tenant/app/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 
-	"user/app/service"
-	"user/app/service/dto"
-	api "user/common/apis"
-	"user/common/global"
+	"tenant/app/service"
+	"tenant/app/service/dto"
+	api "tenant/common/apis"
+	"tenant/common/global"
 )
 
 type SysRole struct {

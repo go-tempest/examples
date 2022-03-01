@@ -5,12 +5,12 @@ import (
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	_ "github.com/go-admin-team/go-admin-core/sdk/pkg/response"
-	api "user/common/apis"
+	api "tenant/common/apis"
 
-	"user/app/models"
-	"user/app/service"
-	"user/app/service/dto"
-	"user/common/actions"
+	"tenant/app/models"
+	"tenant/app/service"
+	"tenant/app/service/dto"
+	"tenant/common/actions"
 )
 
 type SysApi struct {
