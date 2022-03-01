@@ -1,0 +1,18 @@
+application:
+  name: "user-name"
+    port: 8081
+
+registration:
+  enabled: true
+  address: "127.0.0.1"
+  port: 8500
+  service:
+    tags:
+      - "v1.0.0"
+      - "liuyifan"
+    register-self: true
+    deregister-after: "15m"
+    #    Host:
+    health:
+      check-interval: "15s"
+      check-url: "/health"
