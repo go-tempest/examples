@@ -1,14 +1,8 @@
 package handler
 
 import (
-	"fmt"
-	"net/http"
-	"tenant/app/models"
-	"tenant/common"
-
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/sdk"
-	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/config"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/captcha"
@@ -16,9 +10,11 @@ import (
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"github.com/mssola/user_agent"
-	gaConfig "tenant/config"
-
+	"net/http"
+	"tenant/app/models"
+	"tenant/common"
 	"tenant/common/global"
+	"tenant/common/log"
 )
 
 func PayloadFunc(data interface{}) jwt.MapClaims {
@@ -64,10 +60,10 @@ func IdentityHandler(c *gin.Context) interface{} {
 // @Success 200 {string} string "{"code": 200, "expire": "2019-08-07T12:45:48+08:00", "token": ".eyJleHAiOjE1NjUxNTMxNDgsImlkIjoiYWRtaW4iLCJvcmlnX2lhdCI6MTU2NTE0OTU0OH0.-zvzHvbg0A" }"
 // @Router /api/v1/login [post]
 func Authenticator(c *gin.Context) (interface{}, error) {
-	log := api.GetRequestLogger(c)
+
 	db, err := pkg.GetOrm(c)
 	if err != nil {
-		log.Errorf("get db error, %s", err.Error())
+		log.Logger.Errorf("get db error, %s", err.Error())
 		response.Error(c, 500, err, "数据库连接获取失败")
 		return nil, jwt.ErrFailedAuthentication
 	}
@@ -104,7 +100,7 @@ func Authenticator(c *gin.Context) (interface{}, error) {
 	} else {
 		msg = "登录失败"
 		status = "1"
-		log.Warnf("%s login failed!", loginVals.Username)
+		log.Logger.Warnf("%s login failed!", loginVals.Username)
 	}
 	return nil, jwt.ErrFailedAuthentication
 }
@@ -114,13 +110,12 @@ func LoginLogToDB(c *gin.Context, status string, msg string, username string) {
 	if !config.LoggerConfig.EnabledDB {
 		return
 	}
-	log := api.GetRequestLogger(c)
+
 	l := make(map[string]interface{})
 
 	ua := user_agent.New(c.Request.UserAgent())
 	l["ipaddr"] = common.GetClientIP(c)
-	fmt.Println("gaConfig.ExtConfig.AMap.Key", gaConfig.ExtConfig.AMap.Key)
-	l["loginLocation"] = pkg.GetLocation(common.GetClientIP(c), gaConfig.ExtConfig.AMap.Key)
+	l["loginLocation"] = pkg.GetLocation(common.GetClientIP(c), "")
 	l["loginTime"] = pkg.GetCurrentTime()
 	l["status"] = status
 	l["remark"] = c.Request.UserAgent()
@@ -134,12 +129,12 @@ func LoginLogToDB(c *gin.Context, status string, msg string, username string) {
 	q := sdk.Runtime.GetMemoryQueue(c.Request.Host)
 	message, err := sdk.Runtime.GetStreamMessage("", global.LoginLog, l)
 	if err != nil {
-		log.Errorf("GetStreamMessage error, %s", err.Error())
+		log.Logger.Errorf("GetStreamMessage error, %s", err.Error())
 		//日志报错错误，不中断请求
 	} else {
 		err = q.Append(message)
 		if err != nil {
-			log.Errorf("Append message error, %s", err.Error())
+			log.Logger.Errorf("Append message error, %s", err.Error())
 		}
 	}
 }

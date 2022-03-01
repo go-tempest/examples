@@ -8,9 +8,16 @@ var ExtConfig Extend
 //      name: demo-name
 // 使用方法： config.ExtConfig......即可！！
 type Extend struct {
-	AMap AMap // 这里配置对应配置文件的结构即可
+	Log Log // 这里配置对应配置文件的结构即可
 }
 
-type AMap struct {
-	Key string
+type Log struct {
+	Type         string
+	Level        string
+	Filename     string `mapstructure:"filename"`
+	MaxSize      int    `mapstructure:"max-size"`
+	MaxBackups   int    `mapstructure:"max-backups"`
+	MaxAge       int    `mapstructure:"max-age"`
+	Compress     bool
+	LogInConsole bool `mapstructure:"log-in-console"` //是否同时输出到控制台
 }

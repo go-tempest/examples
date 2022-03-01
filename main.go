@@ -3,23 +3,21 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
+	"github.com/go-admin-team/go-admin-core/sdk/middleware"
 	"net/http"
 	"os"
 	"os/signal"
 	"tenant/app/router"
+	"tenant/common/log"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-admin-team/go-admin-core/config/source/file"
 	"github.com/go-admin-team/go-admin-core/sdk"
-	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/config"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/go-admin-team/go-admin-core/sdk/runtime"
-	"tenant/app/models"
 	"tenant/common/database"
-	"tenant/common/global"
 	common "tenant/common/middleware"
 	"tenant/common/middleware/handler"
 	"tenant/common/storage"
@@ -45,18 +43,18 @@ func setup() {
 	//1. 读取配置
 	config.Setup(
 		file.NewSource(file.WithPath(configYml)),
+		log.Setup,
 		database.Setup,
 		storage.Setup,
 	)
 	//注册监听函数
-	queue := sdk.Runtime.GetMemoryQueue("")
-	queue.Register(global.LoginLog, models.SaveLoginLog)
-	queue.Register(global.OperateLog, models.SaveOperaLog)
-	queue.Register(global.ApiCheck, models.SaveSysApi)
-	go queue.Run()
+	//queue := sdk.Runtime.GetMemoryQueue("")
+	//queue.Register(global.LoginLog, models.SaveLoginLog)
+	//queue.Register(global.OperateLog, models.SaveOperaLog)
+	//queue.Register(global.ApiCheck, models.SaveSysApi)
+	//go queue.Run()
 
-	usageStr := `starting api server...`
-	log.Println(usageStr)
+	log.Logger.Info("starting api server...")
 }
 
 func run() error {
@@ -79,7 +77,7 @@ func run() error {
 	go func() {
 		// 服务连接
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatal("listen: ", err)
+			log.Logger.Info("listen: ", err)
 		}
 	}()
 	fmt.Println(pkg.Green("Server Run at:"))
@@ -92,9 +90,9 @@ func run() error {
 	fmt.Printf("%s Shutdown Server ... \r\n", pkg.GetCurrentTimeStr())
 
 	if err := srv.Shutdown(ctx); err != nil {
-		log.Fatal("Server Shutdown:", err)
+		log.Logger.Fatal("Server Shutdown:", err)
 	}
-	log.Println("Server exiting")
+	log.Logger.Info("Server exiting")
 
 	return nil
 }
@@ -112,16 +110,16 @@ func initRouter() {
 	case *gin.Engine:
 		r = h.(*gin.Engine)
 	default:
-		log.Fatal("not support other engine")
+		log.Logger.Fatal("not support other engine")
 		os.Exit(-1)
 	}
 	if config.SslConfig.Enable {
 		r.Use(handler.TlsHandler())
 	}
-	//r.Use(middleware.Metrics())
+	r.Use(middleware.Metrics())
 	r.Use(common.Sentinel()).
-		Use(common.RequestId(pkg.TrafficKey)).
-		Use(api.SetRequestLogger)
+		Use(common.RequestId(pkg.TrafficKey))
+	//Use(api.SetRequestLogger)
 
 	common.InitMiddleware(r)
 

@@ -7,12 +7,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
-	"github.com/go-admin-team/go-admin-core/logger"
-	"github.com/go-admin-team/go-admin-core/sdk/api"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg"
 	"github.com/go-admin-team/go-admin-core/sdk/pkg/response"
 	"gorm.io/gorm"
 
+	"tenant/common/log"
 	"tenant/common/service"
 )
 
@@ -20,7 +19,7 @@ var DefaultLanguage = "zh-CN"
 
 type Api struct {
 	Context *gin.Context
-	Logger  *logger.Helper
+	Logger  log.Log
 	Orm     *gorm.DB
 	Errors  error
 }
@@ -37,13 +36,13 @@ func (e *Api) AddError(err error) {
 // MakeContext 设置http上下文
 func (e *Api) MakeContext(c *gin.Context) *Api {
 	e.Context = c
-	e.Logger = api.GetRequestLogger(c)
+	e.Logger = log.Logger
 	return e
 }
 
 // GetLogger 获取上下文提供的日志
-func (e Api) GetLogger() *logger.Helper {
-	return api.GetRequestLogger(e.Context)
+func (e *Api) GetLogger() log.Log {
+	return e.Logger
 }
 
 func (e *Api) Bind(d interface{}, bindings ...binding.Binding) *Api {

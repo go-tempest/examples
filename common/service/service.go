@@ -2,8 +2,8 @@ package service
 
 import (
 	"fmt"
+	"tenant/common/log"
 
-	"github.com/go-admin-team/go-admin-core/logger"
 	"gorm.io/gorm"
 )
 
@@ -11,7 +11,7 @@ type Service struct {
 	Orm   *gorm.DB
 	Msg   string
 	MsgID string
-	Log   *logger.Helper
+	Log   log.Log
 	Error error
 }
 
