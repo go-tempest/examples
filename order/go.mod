@@ -1,4 +1,4 @@
-module user-name
+module user
 
 go 1.17
 

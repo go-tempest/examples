@@ -1,0 +1,10 @@
+application:
+  name: "order"
+  port: 18080
+
+registration:
+  enabled: true
+  address: "127.0.0.1"
+  port: 8500
+  service:
+    register-self: false

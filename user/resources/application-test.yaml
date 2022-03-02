@@ -1,6 +1,6 @@
 application:
-  name: "user-name"
-  port: 8080
+  name: "user"
+  port: 8081
 
 registration:
   enabled: true

@@ -1,8 +1,8 @@
 logger:
   type: "zap"
-  level: "test"
+  level: "info"
   file:
-    filename: "/Users/lauevan/Documents/workspaces/open-source/go-tempest/test-create/user-name/log/user-name.log"
+    filename: "/Users/lauevan/Documents/workspaces/open-source/go-tempest/examples/user/log/user.log"
     max-size: 600
     max-backups: 20
     max-age: 30
