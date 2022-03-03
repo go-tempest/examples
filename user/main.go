@@ -3,23 +3,52 @@ package main
 import (
     "context"
     "fmt"
-    _ "github.com/go-tempest/tempest/boostrap"
+    "github.com/go-tempest/tempest/boostrap"
+    "google.golang.org/grpc"
+    "net"
     "net/http"
     "os"
     "os/signal"
+    "strconv"
     "syscall"
     "user/endpoint"
+    "user/pb"
     "user/transport"
 )
 
 func main() {
 
+    bctx := boostrap.GetContext()
+    defer func() {
+        _ = bctx.Logger.Sync()
+    }()
+
     errc := make(chan error)
     ctx := context.Background()
 
+    endpoints := new(endpoint.AssemblyEndpoint).Initialize()
+
     go func() {
-        handler := transport.CreateHttpHandler(ctx, new(endpoint.AssemblyEndpoint).Initialize())
-        errc <- http.ListenAndServe(":8080", handler)
+        handler := transport.CreateHttpHandler(ctx, endpoints)
+        errc <- http.ListenAndServe(":"+strconv.Itoa(bctx.AppConfig.Port), handler)
+    }()
+
+    go func() {
+        grpcHandler := transport.CreateGrpcHandler(ctx, endpoints)
+
+        listener, err := net.Listen("tcp", ":"+strconv.Itoa(bctx.RegistrationConfig.Service.Port))
+        if err != nil {
+            errc <- err
+            return
+        }
+
+        s := grpc.NewServer()
+        pb.RegisterUserServiceServer(s, grpcHandler)
+        err = s.Serve(listener)
+        if err != nil {
+            errc <- err
+            return
+        }
     }()
 
     go func() {
@@ -28,6 +57,5 @@ func main() {
         errc <- fmt.Errorf("%s", <-c)
     }()
 
-    err := <-errc
-    fmt.Println(err)
+    bctx.Logger.Error(<-errc)
 }

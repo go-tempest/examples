@@ -17,7 +17,7 @@ type UserResponse struct {
 func CreateUserEndpoint(svc service.UserService) endpoint.Endpoint {
     return func(ctx context.Context, request interface{}) (response interface{}, err error) {
         userRequest := request.(UserRequest)
-        username := svc.GetUsername(userRequest.Id)
+        username := svc.GetUsername(ctx, userRequest.Id)
         return UserResponse{
             Username: username,
         }, nil

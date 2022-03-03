@@ -12,6 +12,7 @@ registration:
       - "liuyifan"
     register-self: true
     deregister-after: "15m"
+    port: 18080
     #    Host:
     health:
       check-interval: "15s"

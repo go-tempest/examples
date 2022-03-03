@@ -1,14 +1,17 @@
 package service
 
-import "strconv"
+import (
+    "context"
+    "strconv"
+)
 
 type UserService interface {
-    GetUsername(id int) string
+    GetUsername(ctx context.Context, id int) string
 }
 
 type UserServiceImpl struct {
 }
 
-func (u UserServiceImpl) GetUsername(id int) string {
+func (u UserServiceImpl) GetUsername(_ context.Context, id int) string {
     return "张三" + strconv.Itoa(id)
 }
