@@ -18,8 +18,6 @@ func main() {
         errChan <- fmt.Errorf("%s", <-c)
     }()
 
-    lb.
-
     err := <-errChan
     fmt.Println(err)
 }
